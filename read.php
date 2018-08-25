@@ -28,6 +28,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                // Retrieve individual field value
 					$description = $row["description"];
 					$property_num = $row["property_num"];
+					$new_property_num = $row["new_property_num"];
 					$quantity_unit = $row["quantity_unit"];
 					$unit_value = $row["unit_value"];
 					$BPC_quantity = $row["BPC_quantity"];
@@ -39,6 +40,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 					$Remarks = $row["Remarks"];
 					$type = $row["type"];
 					$date = $row["date"];
+					$image = $row["image"];
+					$issued = $row["issued"];
             } else{
                 // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: error.php");
@@ -65,23 +68,27 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Contact</title>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <title>CHRIIS-View Item</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+	<link rel="stylesheet" href="css/bootstrap.css">
     <style type="text/css">
         .wrapper{
             width: 1000px;
-            margin-right: 15%;
-			margin-top: 5%;
+            margin: 0 auto;
+            position:center;
+			margin-top: 0%;
             font-size:30px;
-            float: right;
+            color:white;
+			float:right;
+			margin-right: 10%;
+            
         }
 		btn {
 			
 			background-color: #4CAF51;
 			border: none;
 			color: white;
-			padding: 15px 25px;
+			padding: 25px 25px;
 			text-align: center;
 			font-size: 30px;
 			cursor: pointer;
@@ -90,19 +97,30 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 		.button:hover {
 			background-color: green;
 		}
-			</style>
+		
+		.image{
+			margin-top: 5%;
+			margin-left: 15%;
+			float: left;
+		}
+	</style>
 
 </head>
 
-<body style = "padding-top: 10px;">
-		
+<body style = "padding-top: 10px; background-color:grey;">
+	<div class="image">
+		<tr>
+			<td><img src="uploads/
+			<?php echo $row['image']; ?>" width="300" height="300"></td>
+		</tr>
+	</div>	
 
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12" style="border:7px solid powderblue;box-shadow: 10px 10px 5px grey;border-bottom-left-radius: 50px 20px;border-bottom-left-radius: 25px;padding-bottom:10px;" >
+                <div class="col-md-12" >
                     <div class="page-header">
-                        <h1 style=";font-family:Times new roman times serif;font-size:50px;"><strong>View Items</strong></h1><?php echo $row["type"]; ?>
+                        <h1 style=";font-family:Times new roman times serif;font-size:200%;"><center><strong>View Item</strong></h1></center><?php echo $row["type"]; ?>
                     </div>
                     <div class="form-group">
                         <label style="font-size: 30px">Article:
@@ -112,8 +130,12 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <?php echo $row["description"];?>
                     </div>
                     <div class="form-group">
-                        <label style="font-size: 30px">Property Number:</label>
+                        <label style="font-size: 30px">Old Property Number:</label>
                         <?php echo $row["property_num"]; ?>
+                    </div>
+					<div class="form-group">
+                        <label style="font-size: 30px">New Property Number:</label>
+                        <?php echo $row["new_property_num"]; ?>
                     </div>
                     <div class="form-group">
                         <label style="font-size: 30px">Quantity Unit:</label>
@@ -148,6 +170,10 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <?php echo $row["SO_value"]; ?>
                     </div>
 					<div class="form-group">
+						<label style="font-size: 30px">M.R. Issued to:</label>
+						<?php echo $row["issued"]; ?>
+					</div>
+					<div class="form-group">
 						<label style="font-size: 30px">Remarks, State Whereabout, Condition etc.:</label>
 						<?php echo $row["Remarks"]; ?>
 					</div>
@@ -155,7 +181,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                         <label style="font-size: 30px">Date: </label>
                         <?php echo $row["date"]; ?>
                     </div>
-                    <center><a href="tables.php" class="btn btn-primary btn-lg">Back</a></center>
+                    <center><a href="index.php" class="btn btn-primary btn-lg">Back</a></center>
                    
                 </div>
             </div>        

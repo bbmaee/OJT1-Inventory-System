@@ -1,10 +1,10 @@
 <?php
-// Enter your Host, username, password, database below.
-// I left password empty because i do not set password on localhost.
-$con = mysqli_connect("localhost","root","","register");
-// Check connection
+$con= mysqli_connect("localhost", "root","chradminregionxi","register");
+
 if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+{
+    echo "failed to connect to MYSQL: " . mysqli_connect_errno();
+}
+
 ?>
+

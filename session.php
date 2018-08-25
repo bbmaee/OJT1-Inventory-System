@@ -2,7 +2,7 @@
 	session_start();
 	
 	if (!isset($_SESSION['id']) ||(trim ($_SESSION['id']) == '')) {
-	header('location:../tables.php');
+	header('location:../index.php');
     exit();
 	}
 	
@@ -13,3 +13,4 @@
 	
 	$article=$srow['article'];
 ?>
+
